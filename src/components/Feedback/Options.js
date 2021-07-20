@@ -12,7 +12,7 @@ const FEEDBACK_BUTTON = [
 class Options extends Component {
   render() {
     return (
-      <div>
+      <div className={StyleSheet.options}>
         {FEEDBACK_BUTTON.map(({ id, label, value }) => (
           <OptionItem
             key={id}

@@ -9,7 +9,6 @@ class Section extends Component {
     return (
       <div className={styles.section}>
         <h2>{this.props.title}</h2>
-        <Options onLeaveFeedback={this.props.onLeaveFeedback} />
       </div>
     );
   }

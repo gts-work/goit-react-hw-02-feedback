@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 import Statistic from "./Statistic";
 import Notification from "./Notification";
+import Options from "./Options";
 import Section from "./Section";
+
 import styles from "./Feedback.module.css";
 
 class Feedback extends Component {
@@ -45,10 +47,8 @@ class Feedback extends Component {
 
     return (
       <div className={styles.feedbackBlock}>
-        <Section
-          title="Please leave feedback"
-          onLeaveFeedback={this.handleVoiting}
-        />
+        <Section title="Please leave feedback" />
+        <Options onLeaveFeedback={this.handleVoiting} />
 
         {this.countTotalFeedback() ? (
           <Statistic

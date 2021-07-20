@@ -2,18 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import OptionItem from "./OptionItem";
-
-const FEEDBACK_BUTTON = [
-  { id: 1, label: "Good", value: "good" },
-  { id: 2, label: "Neutral", value: "neutral" },
-  { id: 3, label: "Bad", value: "bad" },
-];
+import feedbackButton from "../../data/feedbackButton.json";
 
 class Options extends Component {
   render() {
     return (
       <div className={StyleSheet.options}>
-        {FEEDBACK_BUTTON.map(({ id, label, value }) => (
+        {feedbackButton.map(({ id, label, value }) => (
           <OptionItem
             key={id}
             label={label}

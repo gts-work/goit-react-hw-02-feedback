@@ -1,32 +1,68 @@
 import React, { Component } from "react";
 
-const FEEDBACK_BUTTON = [
-  { id: 1, label: "Good", key: "good" },
-  { id: 2, label: "Neutral", key: "neutral" },
-  { id: 3, label: "Bad", key: "bad" },
-];
+import Statistic from "./Statistic";
+import Notification from "./Notification";
+import Section from "./Section";
 
 class Feedback extends Component {
   state = {
-    good: 20,
+    good: 0,
     neutral: 0,
     bad: 0,
+    totalFeedback: 0,
   };
 
   handleVoiting = (event) => {
     console.log("click: ", event.target.value);
-    // this.setState((prevState) => ({}));
+
+    if (event.target.value === "good") {
+      this.setState((prevState) => ({
+        good: prevState.good + 1,
+      }));
+      console.log("Feedback ~ this.setState ~ good === ", this.state.good);
+    }
+
+    if (event.target.value === "neutral") {
+      this.setState((prevState) => ({
+        neutral: prevState.neutral + 1,
+      }));
+    }
+
+    if (event.target.value === "bad") {
+      this.setState((prevState) => ({
+        bad: prevState.bad + 1,
+      }));
+    }
+
+    this.countTotalFeedback();
+  };
+
+  countTotalFeedback = () => {
+    this.setState((prevState) => ({
+      totalFeedback: prevState.totalFeedback + 1,
+    }));
   };
 
   render() {
+    const { good, neutral, bad, totalFeedback } = this.state;
+
     return (
       <div>
-        <h2>Please leave feedback</h2>
-        {FEEDBACK_BUTTON.map(({ id, label, key }) => (
-          <button key={id} value={key} onClick={this.handleVoiting}>
-            {label} {this.state[key]}
-          </button>
-        ))}
+        <Section
+          title="Please leave feedback"
+          onLeaveFeedback={this.handleVoiting}
+        />
+
+        {totalFeedback ? (
+          <Statistic
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            totalFeedback={totalFeedback}
+          />
+        ) : (
+          <Notification message="No feedback given" />
+        )}
       </div>
     );
   }

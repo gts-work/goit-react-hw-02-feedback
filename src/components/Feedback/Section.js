@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Options from "./Options";
+import styles from "./Feedback.module.css";
 
 class Section extends Component {
   render() {
     return (
-      <div>
+      <div className={styles.section}>
         <h2>{this.props.title}</h2>
         <Options onLeaveFeedback={this.props.onLeaveFeedback} />
       </div>

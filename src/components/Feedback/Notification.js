@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import styles from "./Feedback.module.css";
+
 class Notification extends Component {
   render() {
     return (
-      <div>
+      <div className={styles.section}>
         <h3>{this.props.message}</h3>
       </div>
     );

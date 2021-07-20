@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import styles from "./Feedback.module.css";
+
 class Statistic extends Component {
   feedbackPercentage = () => {
     const count = (this.props.good * 100) / this.props.totalFeedback;
@@ -13,14 +15,32 @@ class Statistic extends Component {
 
   render() {
     return (
-      <>
-        <h3>Statistic</h3>
-        <p>Good: {this.props.good}</p>
-        <p>Neutral: {this.props.neutral}</p>
-        <p>Bad: {this.props.bad}</p>
-        <p>Total: {this.props.totalFeedback}</p>
-        <p>Positive feedback: {this.feedbackPercentage()} %</p>
-      </>
+      <div>
+        <h3 className={styles.statistic_title}>Statistic</h3>
+
+        <table className={styles.statistic}>
+          <tr>
+            <td>Good</td>
+            <td>{this.props.good}</td>
+          </tr>
+          <tr>
+            <td>Neutral</td>
+            <td>{this.props.neutral}</td>
+          </tr>
+          <tr>
+            <td>Bad</td>
+            <td>{this.props.bad}</td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td>{this.props.totalFeedback}</td>
+          </tr>
+        </table>
+
+        <p className={styles.voiting_percent}>
+          Positive feedback: {this.feedbackPercentage()} %
+        </p>
+      </div>
     );
   }
 }

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Statistic from "./Statistic";
 import Notification from "./Notification";
 import Section from "./Section";
+import styles from "./Feedback.module.css";
 
 class Feedback extends Component {
   state = {
@@ -47,7 +48,7 @@ class Feedback extends Component {
     const { good, neutral, bad, totalFeedback } = this.state;
 
     return (
-      <div>
+      <div className={styles.feedbackBlock}>
         <Section
           title="Please leave feedback"
           onLeaveFeedback={this.handleVoiting}

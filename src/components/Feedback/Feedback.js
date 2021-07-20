@@ -10,7 +10,6 @@ class Feedback extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
-    totalFeedback: 0,
   };
 
   handleVoiting = (event) => {
@@ -34,18 +33,15 @@ class Feedback extends Component {
         bad: prevState.bad + 1,
       }));
     }
-
-    this.countTotalFeedback();
   };
 
   countTotalFeedback = () => {
-    this.setState((prevState) => ({
-      totalFeedback: prevState.totalFeedback + 1,
-    }));
+    const count = this.state.good + this.state.neutral + this.state.bad;
+    return count || 0;
   };
 
   render() {
-    const { good, neutral, bad, totalFeedback } = this.state;
+    const { good, neutral, bad } = this.state;
 
     return (
       <div className={styles.feedbackBlock}>
@@ -54,12 +50,12 @@ class Feedback extends Component {
           onLeaveFeedback={this.handleVoiting}
         />
 
-        {totalFeedback ? (
+        {this.countTotalFeedback() ? (
           <Statistic
             good={good}
             neutral={neutral}
             bad={bad}
-            totalFeedback={totalFeedback}
+            totalFeedback={this.countTotalFeedback}
           />
         ) : (
           <Notification message="No feedback given" />

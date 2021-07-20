@@ -44,6 +44,7 @@ class Feedback extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
 
     return (
       <div className={styles.feedbackBlock}>
@@ -51,12 +52,7 @@ class Feedback extends Component {
         <Options onLeaveFeedback={this.handleVoiting} />
 
         {this.countTotalFeedback() ? (
-          <Statistic
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            totalFeedback={this.countTotalFeedback}
-          />
+          <Statistic good={good} neutral={neutral} bad={bad} total={total} />
         ) : (
           <Notification message="No feedback given" />
         )}

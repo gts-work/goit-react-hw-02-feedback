@@ -5,13 +5,11 @@ import styles from "./Feedback.module.css";
 
 class Statistic extends Component {
   feedbackPercentage = () => {
-    const count = (this.props.good * 100) / this.props.totalFeedback();
+    const count = (this.props.good * 100) / this.props.total;
     return Math.round(count);
   };
 
   render() {
-    const total = this.props.totalFeedback();
-
     return (
       <div>
         <h3 className={styles.statistic_title}>Statistic</h3>
@@ -31,7 +29,7 @@ class Statistic extends Component {
           </tr>
           <tr>
             <td>Total</td>
-            <td>{total}</td>
+            <td>{this.props.total}</td>
           </tr>
         </table>
 
